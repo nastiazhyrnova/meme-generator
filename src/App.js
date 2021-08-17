@@ -1,25 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useRef } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import Canvas from './Canvas';
+import ImageInput from './ImageInput';
+
+const App = () => {
+	const [image, setImage] = useState(null);
+	const [upperText, setUpperText] = useState('');
+
+	const upperTextRef = useRef();
+
+	const uploadImageHandler = e => {
+		e.preventDefault();
+		console.log(e.target.files[0]);
+		if (e.target.files[0]) {
+			const reader = new FileReader();
+			reader.onloadend = () => {
+				const img = new Image();
+				img.src = reader.result;
+				setImage(img);
+			};
+			reader.readAsDataURL(e.target.files[0]);
+		}
+	};
+
+	const upperTextHandler = e => {
+		setUpperText(e.target.value);
+	};
+
+	const resetAll = () => {
+		setImage(null);
+		upperTextRef.current.value = '';
+	};
+
+	return (
+		<div className='App'>
+			<Canvas image={image} upperText={upperText} />
+			<form>
+				<ImageInput uploadImageHandler={uploadImageHandler} />
+				<br></br>
+				<input type='Text' onChange={upperTextHandler} ref={upperTextRef} />
+				<br></br>
+				<button type='button' onClick={resetAll}>
+					Clear
+				</button>
+			</form>
+			<br></br>
+		</div>
+	);
+};
 
 export default App;
