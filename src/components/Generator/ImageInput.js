@@ -1,5 +1,7 @@
 import { useRef } from 'react';
 
+import Button from '../UI/Button';
+
 const ImageInput = props => {
 	const imageFileRef = useRef();
 
@@ -10,7 +12,7 @@ const ImageInput = props => {
 
 	return (
 		<>
-			<button onClick={onClickUpload}>UPLOAD HERE</button>
+			<Button onClick={onClickUpload}>UPLOAD YOUR IMAGE HERE</Button>
 			<input
 				type='file'
 				accept='image/*'

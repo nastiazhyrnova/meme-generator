@@ -1,4 +1,9 @@
 import { useRef, useEffect } from 'react';
+import styled from 'styled-components';
+
+const CanvasStyled = styled.canvas`
+	border: 1px dashed var(--main-white-color);
+`;
 
 const Canvas = props => {
 	const canvasRef = useRef();
@@ -13,7 +18,7 @@ const Canvas = props => {
 		if (image) {
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
 			ctx.drawImage(image, 0, 0);
-			ctx.font = '75px verdana';
+			ctx.font = '75px Impact';
 			ctx.shadowColor = 'black';
 			ctx.shadowBlur = 7;
 			ctx.lineWidth = 5;
@@ -28,7 +33,7 @@ const Canvas = props => {
 		}
 	}, [image, upperText]);
 
-	return <canvas height='600px' width='600px' ref={canvasRef} />;
+	return <CanvasStyled height='500px' width='500px' ref={canvasRef} />;
 };
 
 export default Canvas;
