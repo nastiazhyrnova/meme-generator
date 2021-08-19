@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Size = props => {
+const FontSize = props => {
 	return <div></div>;
 };
 
-export default Size;
+export default FontSize;

@@ -1,9 +1,3 @@
-import { CHANGE_COLOR } from './actionTypes';
+import { cloneDeep } from 'lodash';
 
-export const changeColor = (textType, color) => dispatch => {
-	dispatch({
-		type: CHANGE_COLOR,
-		textType,
-		color,
-	});
-};
+export 

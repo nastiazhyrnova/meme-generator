@@ -59,11 +59,13 @@ const Generator = () => {
 					<TextInput
 						title='Top text'
 						type='Text'
+						textlocation='top'
 						placeholder='Write top text here'
 					/>
 					<TextInput
 						title='Bottom text'
 						type='Text'
+						textlocation='bottom'
 						placeholder='Write bottom text here'
 					/>
 				</FlexColumn>

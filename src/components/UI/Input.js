@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { DebounceInput } from 'react-debounce-input';
 
-const InputStyle = styled.input`
+const InputStyle = styled(DebounceInput)`
 	padding: 0.5rem 1rem;
 	font-size: 1.2rem;
 	height: 100%;
@@ -15,7 +16,7 @@ const InputStyle = styled.input`
 `;
 
 const Input = props => {
-	return <InputStyle {...props} />;
+	return <InputStyle {...props} debounceTimeout={400} />;
 };
 
 export default Input;
