@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
   padding: 0;
   margin:0;
   box-sizing: border-box;
-  font-family: 'Impact', sans-serif;
+  font-family: 'Oswald', sans-serif;
   transition: all 0.3s ease
 }
 :root {
@@ -20,8 +20,7 @@ html {
 h1{
   color: var(--main-black-color);
   text-shadow: 0 0 15px var(--main-white-color);
-  /* background-color: var(--main-white-color); */
-  padding: 0.5rem 1rem;
+  font-size: 2.5rem;
 }
 `;
 

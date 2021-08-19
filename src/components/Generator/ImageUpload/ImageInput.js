@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-import Button from '../UI/Button';
+import Button from '../../UI/Button';
 
 const ImageInput = props => {
 	const imageFileRef = useRef();

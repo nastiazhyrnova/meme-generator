@@ -1,27 +1,34 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
-import Canvas from './Canvas';
-import ImageInput from './ImageInput';
+import Canvas from './Canvas/Canvas';
+import ImageInput from './ImageUpload/ImageInput';
 import Button from '../UI/Button';
+import TextInput from './Text/TextInput';
+
+import FlexRow from '../UI/FlexRow';
+import FlexColumn from '../UI/FlexColumn';
 
 const GeneratorWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-around;
-	height: 100vh;
+	gap: 1.5rem;
+
+	& h1 {
+		margin: 2rem 0 1rem;
+	}
 `;
 
 const Generator = () => {
-	const [image, setImage] = useState(null);
-	const [upperText, setUpperText] = useState('');
+	const textStore = useSelector(state => state.text);
 
-	const upperTextRef = useRef();
+	const [image, setImage] = useState(null);
 
 	const uploadImageHandler = e => {
 		e.preventDefault();
-		console.log(e.target.files[0]);
 		if (e.target.files[0]) {
 			const reader = new FileReader();
 			reader.onloadend = () => {
@@ -33,24 +40,46 @@ const Generator = () => {
 		}
 	};
 
-	const upperTextHandler = e => {
-		setUpperText(e.target.value);
-	};
-
 	const resetAll = () => {
 		setImage(null);
-		upperTextRef.current.value = '';
+		// topTextRef.current.value = '';
 	};
 
 	return (
 		<GeneratorWrapper>
 			<h1>Meme Generator</h1>
 			<ImageInput uploadImageHandler={uploadImageHandler} />
-			<Canvas image={image} upperText={upperText} />
-			<input type='Text' onChange={upperTextHandler} ref={upperTextRef} />
-			<Button type='button' onClick={resetAll}>
-				Reset all
-			</Button>
+			<FlexRow>
+				<Canvas
+					image={image}
+					topText={textStore.top.text}
+					topTextColor={textStore.top.color}
+				/>
+				<FlexColumn>
+					<TextInput
+						title='Top text'
+						type='Text'
+						placeholder='Write top text here'
+					/>
+					<TextInput
+						title='Bottom text'
+						type='Text'
+						placeholder='Write bottom text here'
+					/>
+				</FlexColumn>
+			</FlexRow>
+			<FlexRow>
+				<Button type='button' onClick={resetAll}>
+					Reset all
+				</Button>
+				<Button
+					type='button'
+					onClick={() => {}}
+					bgColor='var(--orange-color)'
+					textColor='var(--main-white-color)'>
+					DOWNLOAD
+				</Button>
+			</FlexRow>
 		</GeneratorWrapper>
 	);
 };

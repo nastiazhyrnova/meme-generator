@@ -8,32 +8,31 @@ const CanvasStyled = styled.canvas`
 const Canvas = props => {
 	const canvasRef = useRef();
 
-	const { image, upperText } = { ...props };
+	const { image, topText, topTextColor } = { ...props };
 
 	useEffect(() => {
 		const canvas = canvasRef.current;
 		const ctx = canvas.getContext('2d');
 
-		console.log(ctx);
 		if (image) {
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
 			ctx.drawImage(image, 0, 0);
-			ctx.font = '75px Impact';
+			ctx.font = '60px Impact';
 			ctx.shadowColor = 'black';
 			ctx.shadowBlur = 7;
 			ctx.lineWidth = 5;
 			ctx.textAlign = 'center';
-			ctx.strokeText(upperText, canvas.width / 2, canvas.height / 2);
+			ctx.strokeText(topText, canvas.width / 2, canvas.height / 2);
 			ctx.shadowBlur = 0;
-			ctx.fillStyle = 'white';
+			ctx.fillStyle = topTextColor;
 			ctx.textAlign = 'center';
-			ctx.fillText(upperText, canvas.width / 2, canvas.height / 2);
+			ctx.fillText(topText, canvas.width / 2, canvas.height / 2);
 		} else {
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
 		}
-	}, [image, upperText]);
+	}, [image, topText, topTextColor]);
 
-	return <CanvasStyled height='500px' width='500px' ref={canvasRef} />;
+	return <CanvasStyled height='400px' width='400px' ref={canvasRef} />;
 };
 
 export default Canvas;
