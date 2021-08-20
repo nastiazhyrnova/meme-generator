@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import Input from '../../UI/Input';
