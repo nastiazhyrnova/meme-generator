@@ -1,14 +1,15 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 import Canvas from './Canvas/Canvas';
 import ImageInput from './ImageUpload/ImageInput';
 import Button from '../UI/Button';
 import TextInput from './Text/TextInput';
-
 import FlexRow from '../UI/FlexRow';
 import FlexColumn from '../UI/FlexColumn';
+
+import { RESET_TEXTS } from '../../store/actionTypes';
 
 const GeneratorWrapper = styled.div`
 	display: flex;
@@ -24,6 +25,8 @@ const Generator = () => {
 
 	const [image, setImage] = useState(null);
 
+	const dispatch = useDispatch();
+
 	const uploadImageHandler = e => {
 		e.preventDefault();
 		if (e.target.files[0]) {
@@ -35,11 +38,15 @@ const Generator = () => {
 			};
 			reader.readAsDataURL(e.target.files[0]);
 		}
+		//TODO: move canvasSize to redux and change image size after upload
 	};
 
 	const resetAll = () => {
 		setImage(null);
-		// topTextRef.current.value = '';
+		dispatch({
+			type: RESET_TEXTS,
+		});
+		//TODO: remove values from the inputs
 	};
 
 	return (
