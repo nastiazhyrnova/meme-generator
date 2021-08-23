@@ -1,18 +1,13 @@
 import styled from 'styled-components';
 import { DebounceInput } from 'react-debounce-input';
 
+import textChangeFieldsStyle from '../../styles/textChangeFieldsStyle';
+
 const InputStyle = styled(DebounceInput)`
-	padding: 0.5rem 1rem;
-	font-size: 1.2rem;
+	${textChangeFieldsStyle};
 	height: 100%;
-	border: none;
-	border-radius: 3rem;
-	outline: none;
 	text-align: center;
-	background-color: var(--main-white-color);
-	color: ${props => props.color};
-	width: ${props => (props.width ? props.width : 'auto')};
-	height: ${props => (props.height ? props.height : 'auto')};
+	flex-grow: ${props => (props.flexgrow ? props.flexgrow : '')};
 `;
 
 const Input = props => {

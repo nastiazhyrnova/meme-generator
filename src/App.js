@@ -5,8 +5,8 @@ import GlobalStyle from './styles/GlobalStyle';
 const App = () => {
 	return (
 		<>
-			<Background />
 			<GlobalStyle />
+			<Background />
 			<Generator />
 		</>
 	);

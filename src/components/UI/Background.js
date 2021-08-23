@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import bg from '../../assets/bg.png';
 
 const BackgroundStyled = styled.div`
-	height: 100vh;
+	height: 100%;
 	background-size: cover;
 	background-position: 50% 50%;
 	width: 100vw;

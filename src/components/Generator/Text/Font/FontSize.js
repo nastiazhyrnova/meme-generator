@@ -1,7 +1,12 @@
-import React from 'react';
-
+import Select from '../../../UI/Select';
 const FontSize = props => {
-	return <div></div>;
+	return (
+		<Select>
+			<option value='50px'>50</option>
+			<option value='60px'>60</option>
+			<option value='70px'>70</option>
+		</Select>
+	);
 };
 
 export default FontSize;

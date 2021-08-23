@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import Input from '../../UI/Input';
 import FlexColumn from '../../UI/FlexColumn';
 import FlexRow from '../../UI/FlexRow';
-import Color from './Font/FontColor/FontColor';
+import FontColor from './Font/FontColor/FontColor';
 import FontSize from './Font/FontSize';
 import Font from './Font/Font';
 
@@ -24,16 +24,16 @@ const TextInput = props => {
 		<>
 			<FlexColumn>
 				<p>{props.title}</p>
-				<Input
-					{...props}
-					type='text'
-					onChange={e => onTextChange(e)}
-					width='100%'
-				/>
-				<FlexRow>
-					<Color textlocation={props.textlocation} />
-					<FontSize textlocation={props.textlocation} />
+				<FlexRow height='2.5rem' gap='0.5rem'>
+					<Input
+						{...props}
+						type='text'
+						onChange={e => onTextChange(e)}
+						flexgrow='1'
+					/>
 					<Font textlocation={props.textlocation} />
+					<FontSize textlocation={props.textlocation} />
+					<FontColor textlocation={props.textlocation} />
 				</FlexRow>
 			</FlexColumn>
 		</>

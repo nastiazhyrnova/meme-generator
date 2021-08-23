@@ -16,7 +16,7 @@ const GeneratorWrapper = styled.div`
 	align-items: center;
 	justify-content: space-around;
 	gap: 1.5rem;
-
+	margin: 0.5rem;
 	& h1 {
 		margin: 2rem 0 1rem;
 	}

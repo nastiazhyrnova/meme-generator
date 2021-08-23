@@ -1,19 +1,14 @@
-import Select from 'react-select';
-import styled from 'styled-components';
-
-const SelectStyled = styled(Select)`
-	display: inline-block;
-	width: 100%;
-`;
+import Select from '../../../UI/Select';
 
 const Font = props => {
-	const options = [
-		{ value: 'Arial', label: 'Arial' },
-		{ value: 'Comic Sans', label: 'Comic Sans' },
-		{ value: 'Pacifico', label: 'Pacifico' },
-	];
-
-	return <SelectStyled options={options} />;
+	return (
+		<Select>
+			<option value='Arial'>Arial</option>
+			<option value='Comic Sans'>Comic Sans</option>
+			<option value='Impact'>Impact</option>
+			<option value='Pacifico'>Pacifico</option>
+		</Select>
+	);
 };
 
 export default Font;
