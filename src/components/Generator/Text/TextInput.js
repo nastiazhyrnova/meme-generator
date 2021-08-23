@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import styled from 'styled-components';
 
 import Input from '../../UI/Input';
 import FlexColumn from '../../UI/FlexColumn';
@@ -8,6 +9,14 @@ import FontSize from './Font/FontSize';
 import Font from './Font/Font';
 
 import { CHANGE_TEXT } from '../../../store/actionTypes';
+
+const TextChangeFieldsWrapper = styled.div`
+	height: 2.5rem;
+	display: flex;
+	flex-direction: row;
+	gap: 0.5rem;
+	width: 100%;
+`;
 
 const TextInput = props => {
 	const dispatch = useDispatch();
@@ -22,18 +31,22 @@ const TextInput = props => {
 
 	return (
 		<>
-			<FlexColumn>
+			<FlexColumn gap='0.75rem'>
 				<p>{props.title}</p>
-				<FlexRow height='2.5rem' gap='0.5rem'>
-					<Input
-						{...props}
-						type='text'
-						onChange={e => onTextChange(e)}
-						flexgrow='1'
-					/>
-					<Font textlocation={props.textlocation} />
-					<FontSize textlocation={props.textlocation} />
-					<FontColor textlocation={props.textlocation} />
+				<FlexRow gap='0.5rem'>
+					<FlexRow>
+						<Input
+							{...props}
+							type='text'
+							onChange={e => onTextChange(e)}
+							width='100%'
+						/>
+					</FlexRow>
+					<TextChangeFieldsWrapper>
+						<Font textlocation={props.textlocation} />
+						<FontSize textlocation={props.textlocation} />
+						<FontColor textlocation={props.textlocation} />
+					</TextChangeFieldsWrapper>
 				</FlexRow>
 			</FlexColumn>
 		</>

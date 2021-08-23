@@ -7,7 +7,6 @@ const InputStyle = styled(DebounceInput)`
 	${textChangeFieldsStyle};
 	height: 100%;
 	text-align: center;
-	flex-grow: ${props => (props.flexgrow ? props.flexgrow : '')};
 `;
 
 const Input = props => {

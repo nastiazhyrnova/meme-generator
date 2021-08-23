@@ -4,13 +4,15 @@ import textChangeFieldsStyle from '../../styles/textChangeFieldsStyle';
 
 const SelectStyled = styled.div`
 	position: relative;
-	flex-grow: 0;
 	height: 100%;
+	flex-grow: 2;
 	& select {
 		${textChangeFieldsStyle};
 		height: 100%;
 		appearance: none;
-		padding-right: 2.5rem;
+		padding-right: 2rem;
+		width: 100%;
+		min-width: 4.5rem;
 	}
 
 	& .custom-arrow {
