@@ -22,12 +22,9 @@ const GeneratorWrapper = styled.div`
 
 const Generator = () => {
 	const textStore = useSelector(state => state.text);
+	const canvasImageStore = useSelector(state => state.canvasImage);
 
 	const [image, setImage] = useState(null);
-	const [imageSize, setImageSize] = useState({
-		width: null,
-		height: null,
-	});
 
 	const dispatch = useDispatch();
 
@@ -42,6 +39,16 @@ const Generator = () => {
 				setImage(img);
 			};
 		}
+	};
+
+	const downloadImage = e => {
+		e.preventDefault();
+		// const canvas = canvasRef.current.toDataURL('image/jpg');
+		// console.log(canvas);
+		const link = document.createElement('a');
+		link.download = 'meme.jpg';
+		link.href = canvasImageStore;
+		link.click();
 	};
 
 	const resetAll = () => {
@@ -83,9 +90,10 @@ const Generator = () => {
 				</Button>
 				<Button
 					type='button'
-					onClick={() => {}}
+					onClick={downloadImage}
 					bgColor='var(--orange-color)'
 					textColor='var(--main-white-color)'>
+					{/* <a href={} download='meme.jpg'></a> */}
 					DOWNLOAD
 				</Button>
 			</FlexRow>

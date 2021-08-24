@@ -9,7 +9,7 @@ const textChangeFieldsStyle = props => css`
 	width: ${props => (props.width ? props.width : 'auto')};
 	height: ${props => (props.height ? props.height : 'auto')};
 	background-color: ${props =>
-		props.bgColor ? props.bgColor : 'var(--main-white-color)'};
+		props.bgColor ? props.bgColor : 'var(--main-bg-color)'};
 	color: ${props => props.color};
 `;
 
