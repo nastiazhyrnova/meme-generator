@@ -22,6 +22,10 @@ h1{
   text-shadow: 0 0 15px var(--main-white-color);
   font-size: 2.5rem;
 }
+a, a:hover, a:visited {
+  color: inherit;
+  text-decoration: inherit;
+}
 `;
 
 export default GlobalStyle;

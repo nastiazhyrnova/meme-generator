@@ -41,16 +41,6 @@ const Generator = () => {
 		}
 	};
 
-	const downloadImage = e => {
-		e.preventDefault();
-		// const canvas = canvasRef.current.toDataURL('image/jpg');
-		// console.log(canvas);
-		const link = document.createElement('a');
-		link.download = 'meme.jpg';
-		link.href = canvasImageStore;
-		link.click();
-	};
-
 	const resetAll = () => {
 		setImage(null);
 		dispatch({
@@ -86,15 +76,16 @@ const Generator = () => {
 			</FlexRow>
 			<FlexRow>
 				<Button type='button' onClick={resetAll}>
-					Reset all
+					Clear all
 				</Button>
 				<Button
 					type='button'
-					onClick={downloadImage}
+					// onClick={downloadImage}
 					bgColor='var(--orange-color)'
 					textColor='var(--main-white-color)'>
-					{/* <a href={} download='meme.jpg'></a> */}
-					DOWNLOAD
+					<a href={canvasImageStore} download='meme.jpg'>
+						DOWNLOAD
+					</a>
 				</Button>
 			</FlexRow>
 		</GeneratorWrapper>
