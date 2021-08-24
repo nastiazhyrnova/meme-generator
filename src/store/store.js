@@ -1,9 +1,11 @@
 import { combineReducers, createStore } from 'redux';
 
-import textReducer from './textReducer';
+import textReducer from './reducers/textReducer';
+import canvasSizeReducer from './reducers/canvasSizeReducer';
 
 const reducers = combineReducers({
 	text: textReducer,
+	canvasSize: canvasSizeReducer,
 });
 
 const store = createStore(

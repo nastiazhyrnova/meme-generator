@@ -1,15 +1,23 @@
-import { useRef, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useRef, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
+
+import {
+	getMinImageSize,
+	getOffsetCoordinates,
+} from '../../../utilities/imageSize';
+import { CHANGE_CANVAS_SIZE } from '../../../store/actionTypes';
 
 const CanvasStyled = styled.canvas`
 	border: 1px dashed var(--main-white-color);
 `;
 
 const Canvas = props => {
-	const [canvasSize, setCanvasSize] = useState(500);
+	const dispatch = useDispatch();
 	const canvasRef = useRef();
+
 	const textStore = useSelector(state => state.text);
+	const canvasSize = useSelector(state => state.canvasSize);
 
 	const { image } = { ...props };
 	const topText = textStore.top;
@@ -17,11 +25,18 @@ const Canvas = props => {
 
 	//change canvas size on viewport change
 	useEffect(() => {
+		//TODO: add debounce
 		const changeCanvasSize = () => {
 			if (window.visualViewport.width <= 532) {
-				setCanvasSize(Math.round(window.visualViewport.width - 32));
+				dispatch({
+					type: CHANGE_CANVAS_SIZE,
+					size: Math.round(window.visualViewport.width - 32),
+				});
 			} else {
-				setCanvasSize('500px');
+				dispatch({
+					type: CHANGE_CANVAS_SIZE,
+					size: 500,
+				});
 			}
 		};
 		window.addEventListener('resize', changeCanvasSize);
@@ -29,7 +44,7 @@ const Canvas = props => {
 		return () => {
 			window.removeEventListener('resize', changeCanvasSize);
 		};
-	}, []);
+	}, [dispatch]);
 
 	//make changes on canvas
 	useEffect(() => {
@@ -40,8 +55,16 @@ const Canvas = props => {
 		if (image) {
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-			//add image
-			ctx.drawImage(image, 0, 0);
+			//resize image and add in the center of the canvas
+			const [imgWidth, imgHeight] = getMinImageSize(
+				image.width,
+				image.height,
+				canvasSize
+			);
+			const [x, y] = getOffsetCoordinates(imgWidth, imgHeight);
+
+			ctx.drawImage(image, x, y, imgWidth, imgHeight);
+			// ctx.drawImage(image, 0, 0);
 
 			//add top text & stroke
 			ctx.font = `${topText.fontSize} ${topText.font}`;

@@ -24,6 +24,10 @@ const Generator = () => {
 	const textStore = useSelector(state => state.text);
 
 	const [image, setImage] = useState(null);
+	const [imageSize, setImageSize] = useState({
+		width: null,
+		height: null,
+	});
 
 	const dispatch = useDispatch();
 
@@ -31,14 +35,13 @@ const Generator = () => {
 		e.preventDefault();
 		if (e.target.files[0]) {
 			const reader = new FileReader();
+			reader.readAsDataURL(e.target.files[0]);
+			const img = new Image();
 			reader.onloadend = () => {
-				const img = new Image();
 				img.src = reader.result;
 				setImage(img);
 			};
-			reader.readAsDataURL(e.target.files[0]);
 		}
-		//TODO: move canvasSize to redux and change image size after upload
 	};
 
 	const resetAll = () => {

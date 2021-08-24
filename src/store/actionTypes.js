@@ -3,3 +3,4 @@ export const CHANGE_FONT = 'CHANGE_FONT';
 export const CHANGE_FONTSIZE = 'CHANGE_FONTSIZE';
 export const CHANGE_TEXT = 'CHANGE_TEXT';
 export const RESET_TEXTS = 'RESET_TEXTS';
+export const CHANGE_CANVAS_SIZE = 'CHANGE_CANVAS_SIZE';

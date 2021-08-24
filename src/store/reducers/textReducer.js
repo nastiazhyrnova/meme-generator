@@ -6,7 +6,7 @@ import {
 	CHANGE_FONT,
 	CHANGE_FONTSIZE,
 	RESET_TEXTS,
-} from './actionTypes';
+} from '../actionTypes';
 
 const changeTextPropertyAction = (state, action, property) => {
 	const newState = cloneDeep(state);
