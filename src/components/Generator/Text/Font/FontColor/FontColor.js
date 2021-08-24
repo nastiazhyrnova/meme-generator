@@ -24,6 +24,7 @@ const FontColor = props => {
 	return (
 		<>
 			<ColorButton
+				{...props}
 				title='Text color'
 				bgColor={textStore[props.textlocation].color}
 				onClick={() => setShowColorPicker(!showColorPicker)}></ColorButton>

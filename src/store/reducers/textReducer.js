@@ -24,8 +24,8 @@ const initialState = {
 	bottom: {
 		text: '',
 		color: '#ffffff',
-		size: '75px',
-		fontSize: 'Arial',
+		fontSize: '75px',
+		font: 'Arial',
 	},
 };
 

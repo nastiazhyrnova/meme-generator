@@ -20,6 +20,12 @@ const GeneratorWrapper = styled.div`
 	margin: 1rem 1rem 4rem 1rem;
 `;
 
+const Title = styled.p`
+	font-size: 1.2rem;
+	color: var(--purple-color);
+	font-weight: 500;
+`;
+
 const Generator = () => {
 	const textStore = useSelector(state => state.text);
 	const canvasImageStore = useSelector(state => state.canvasImage);
@@ -59,12 +65,14 @@ const Generator = () => {
 					topTextColor={textStore.top.color}
 				/>
 				<FlexColumn>
+					<Title>Upload your image and add text:</Title>
 					<TextInput
 						title='Top text'
 						type='Text'
 						textlocation='top'
 						placeholder='Write top text here'
 						value={textStore.top.text}
+						disabled={!canvasImageStore}
 					/>
 					<TextInput
 						title='Bottom text'
@@ -72,6 +80,7 @@ const Generator = () => {
 						textlocation='bottom'
 						placeholder='Write bottom text here'
 						value={textStore.bottom.text}
+						disabled={!canvasImageStore}
 					/>
 				</FlexColumn>
 			</FlexRow>

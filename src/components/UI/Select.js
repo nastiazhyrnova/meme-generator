@@ -28,6 +28,7 @@ const SelectStyled = styled.div`
 		&::before,
 		&::after {
 			--size: 0.3rem;
+			opacity: ${props => (props.disabled ? '0.4' : '1')};
 			content: '';
 			position: absolute;
 			width: 0;
@@ -51,7 +52,7 @@ const SelectStyled = styled.div`
 
 const Select = props => (
 	<SelectStyled {...props}>
-		<select>{props.children}</select>
+		<select {...props}>{props.children}</select>
 		<span className='custom-arrow'></span>
 	</SelectStyled>
 );

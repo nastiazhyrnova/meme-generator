@@ -1,7 +1,6 @@
 import React from 'react';
 
 import styled from 'styled-components';
-import bg from '../../assets/bg.png';
 
 const BackgroundStyled = styled.div`
 	height: 100%;

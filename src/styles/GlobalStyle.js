@@ -26,6 +26,12 @@ a, a:hover, a:visited {
   color: inherit;
   text-decoration: inherit;
 }
+button:disabled, select:disabled, input:disabled {
+  opacity: 0.4;
+  &:hover {
+    cursor: auto;
+  }
+}
 `;
 
 export default GlobalStyle;

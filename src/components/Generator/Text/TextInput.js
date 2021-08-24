@@ -18,6 +18,10 @@ const TextChangeFieldsWrapper = styled.div`
 	width: 100%;
 `;
 
+const Title = styled.p`
+	opacity: ${props => (props.disabled ? '0.4' : '1')};
+`;
+
 const TextInput = props => {
 	const dispatch = useDispatch();
 
@@ -32,7 +36,7 @@ const TextInput = props => {
 	return (
 		<>
 			<FlexColumn gap='0.75rem'>
-				<p>{props.title}</p>
+				<Title disabled={props.disabled}>{props.title}</Title>
 				<FlexRow gap='0.5rem'>
 					<FlexRow>
 						<Input
@@ -43,9 +47,15 @@ const TextInput = props => {
 						/>
 					</FlexRow>
 					<TextChangeFieldsWrapper>
-						<Font textlocation={props.textlocation} />
-						<FontSize textlocation={props.textlocation} />
-						<FontColor textlocation={props.textlocation} />
+						<Font textlocation={props.textlocation} disabled={props.disabled} />
+						<FontSize
+							textlocation={props.textlocation}
+							disabled={props.disabled}
+						/>
+						<FontColor
+							textlocation={props.textlocation}
+							disabled={props.disabled}
+						/>
 					</TextChangeFieldsWrapper>
 				</FlexRow>
 			</FlexColumn>
