@@ -46,7 +46,6 @@ const Generator = () => {
 		dispatch({
 			type: RESET_TEXTS,
 		});
-		//TODO: remove values from the inputs
 	};
 
 	return (
@@ -65,12 +64,14 @@ const Generator = () => {
 						type='Text'
 						textlocation='top'
 						placeholder='Write top text here'
+						value={textStore.top.text}
 					/>
 					<TextInput
 						title='Bottom text'
 						type='Text'
 						textlocation='bottom'
 						placeholder='Write bottom text here'
+						value={textStore.bottom.text}
 					/>
 				</FlexColumn>
 			</FlexRow>
@@ -80,7 +81,6 @@ const Generator = () => {
 				</Button>
 				<Button
 					type='button'
-					// onClick={downloadImage}
 					bgColor='var(--orange-color)'
 					textColor='var(--main-white-color)'>
 					<a href={canvasImageStore} download='meme.jpg'>
