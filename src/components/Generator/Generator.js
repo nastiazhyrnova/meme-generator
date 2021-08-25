@@ -24,14 +24,13 @@ const Title = styled.p`
 	font-size: 1.2rem;
 	color: var(--purple-color);
 	font-weight: 500;
-	font-family: 'Comic Sans', arial !important;
 `;
 
 const Generator = () => {
 	const textStore = useSelector(state => state.text);
 	const canvasImageStore = useSelector(state => state.canvasImage);
 
-	const [image, setImage] = useState(null);
+	const [uploadedImage, setUploadedImage] = useState(null);
 
 	const dispatch = useDispatch();
 
@@ -43,13 +42,13 @@ const Generator = () => {
 			const img = new Image();
 			reader.onloadend = () => {
 				img.src = reader.result;
-				setImage(img);
+				setUploadedImage(img);
 			};
 		}
 	};
 
 	const resetAll = () => {
-		setImage(null);
+		setUploadedImage(null);
 		dispatch({
 			type: RESET_TEXTS,
 		});
@@ -61,7 +60,7 @@ const Generator = () => {
 			<ImageInput uploadImageHandler={uploadImageHandler} />
 			<FlexRow>
 				<Canvas
-					image={image}
+					image={uploadedImage}
 					topText={textStore.top.text}
 					topTextColor={textStore.top.color}
 				/>

@@ -16,7 +16,7 @@ const FontSize = props => {
 	};
 
 	return (
-		<Select {...props} onChange={changeFontSize}>
+		<Select {...props} onChange={changeFontSize} width='35%'>
 			<option value='75px'>75px</option>
 			<option value='70px'>70px</option>
 			<option value='65px'>65px</option>

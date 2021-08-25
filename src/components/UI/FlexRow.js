@@ -8,6 +8,7 @@ const FlexRowWrapper = styled.div`
 	justify-content: center;
 	height: ${props => (props.height ? props.height : '100%')};
 	width: 100%;
+	margin: 0 auto;
 
 	@media (max-width: 1024px) {
 		flex-wrap: wrap;

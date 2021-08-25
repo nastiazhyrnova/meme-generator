@@ -28,7 +28,6 @@ const Canvas = props => {
 
 	//change canvas size on viewport change
 	useEffect(() => {
-		//TODO: add debounce
 		const changeCanvasSize = () => {
 			if (window.visualViewport.width <= 532) {
 				dispatch({
@@ -66,7 +65,7 @@ const Canvas = props => {
 			const [x, y] = getOffsetCoordinates(imgWidth, imgHeight);
 			ctx.drawImage(image, x, y, imgWidth, imgHeight);
 
-			//add top text & stroke
+			//add text & stroke
 			writeCanvasText('top', ctx, topText, canvas.width, canvas.height);
 			writeCanvasText('bottom', ctx, bottomText, canvas.width, canvas.height);
 

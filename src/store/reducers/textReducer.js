@@ -17,13 +17,13 @@ const changeTextPropertyAction = (state, action, property) => {
 const initialState = {
 	top: {
 		text: '',
-		color: '#ffffff',
+		color: '#E58F26',
 		fontSize: '75px',
 		font: 'Arial',
 	},
 	bottom: {
 		text: '',
-		color: '#ffffff',
+		color: '#E58F26',
 		fontSize: '75px',
 		font: 'Arial',
 	},

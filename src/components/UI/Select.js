@@ -6,6 +6,7 @@ const SelectStyled = styled.div`
 	position: relative;
 	height: 100%;
 	flex-grow: 2;
+	width: ${props => (props.width ? props.width : 'auto')};
 	& select {
 		${textChangeFieldsStyle};
 		height: 100%;
