@@ -1,70 +1,182 @@
-# Getting Started with Create React App
+# Task Result - Meme Generator
+
+## Demo
+
+https://meme-generator-nz.web.app/
+
+## Used technologies / Frameworks
+
+- **JavaScript**
+  I chose JavaScript because it is a very versatile language. I love that it can be used in a very broad range or proyects: web and mobile development, front & back-end etc...
+  _“Any application that can be written in JavaScript, will eventually be written in JavaScript.”_ - Jeff Atwood.
+  My knowledge of JS: very good (ES6, Async/Await + Promises etc)
+
+- **ReactJS**
+  I am focusing on working in React framework in all of my projects because it gives advantage of using reusable components - you can scale and maintain and app much easier than in plain JS. Besides that, it has a big community of users, which means more updates and faster bug fixes, various 3rd party libraries, support etc.
+  My knowledge of React: very good (class based & functional components, e.g. hooks, React Router, Redux & Redux Toolkit, styled components etc)
+
+## Used 3rd Party Libraries
+
+I use the following 3rd party libraries in my project:
+
+| Name                                                                 | Reason                                                                                           |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| [lodash](https://lodash.com/)                                        | Making deep copies of objects in one simple function (Redux state update without state mutation) |
+| [react-colorful](https://omgovich.github.io/react-colorful/)         | For simple and lightweight color picker                                                          |
+| [react-debounce-input](https://github.com/nkbt/react-debounce-input) | Debounce canvas update on typing in input                                                        |
+| [styled-components](https://styled-components.com/)                  | CSS for components (easy dynamic CSS change)                                                     |
+| [react-redux](https://react-redux.js.org/)                           | Global state management across all components ( + Redux Dev Tools to see all state and actions)  |
+
+## Installation / Run
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+The following components must be installed locally:
 
-### `npm start`
+- [nodejs](https://nodejs.org/) v14.17.3 and higher
 
-Runs the app in the development mode.\
+- [npm](https://www.npmjs.com.) v6.14.13 and higher
+
+To run the project locally, enter the following in the command line / bash:
+
+```console
+
+$ git clone https://github.com/nastiazhyrnova/meme-generator.git
+
+$ cd meme-generator
+
+$ npm install
+
+$ npm start
+
+```
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The page will reload if you make edits.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
 
-### `npm test`
+## Documentation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Styles
 
-### `npm run build`
+- `index.css`: custom font import
+- All components CSS and global styles are implemented with the 3rd party library `styled-components`:
+  - **`<GlobalStyle />`**: Global styles, includes color palette variables
+  - **`textChangeFieldsStyle.js`**: mixin of styles for text handlers (text input, size, font etc)
+- The rest of the styles are implemented inside of the components
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### UI Components
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-- **`<Button></Button>`**: styled button, all atributes are passed via `props` to the `<button>` element. Additional props accepted:
 
-### `npm run eject`
+| Props       | Description                 | Type                       |
+| :---------- | :-------------------------- | :------------------------- |
+| `bgColor`   | Overwrites background color | _string_ (CSS color value) |
+| `textColor` | Overwrites text color       | _string_ (CSS color value) |
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+-- **`<FlexColumn></FlexColumn>`**: wrapper to style children components with `flex`, direction _column_. Props accepted:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+| Props | Description         | Type                            |
+| :---- | :------------------ | :------------------------------ |
+| `gap` | Overwrites gap size | _string_ with CSS measure units |
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+-- **`<FlexRow></FlexRow>`**: wrapper to style children components with `flex`, direction _row_. Props accepted:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+| Props    | Description         | Type                            |
+| :------- | :------------------ | :------------------------------ |
+| `gap`    | Overwrites gap size | _string_ with CSS measure units |
+| `height` | Overwrites height   | _string_ with CSS measure units |
 
-## Learn More
+-- **`<Input />`**: styled `<input>` with 400 ms debounce. All atributes are passed via `props` to the `<input>` element.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+-- **`<Select></Select>`**: styled `<select>`. All atributes are passed via `props` to the `<select>` element. Wrapper for all `<option>` elements. Additional props accepted:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+| Props   | Description           | Type                            |
+| :------ | :-------------------- | :------------------------------ |
+| `width` | Overwrites width size | _string_ with CSS measure units |
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Functional Components
 
-### Analyzing the Bundle Size
+**`<Generator/>`**: main parent component for the meme generator. Handles uploaded original image state locally. Includes title, all children components and buttons to _Reset all_ or _Download_ finished image. No props needed.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+-- **`<ImageUpload />`**: button to upload image (JPG) and initial image processing. Props accepted:
+| Props | Description | Type |
+|:--|:--|:--|
+| `uploadImageHandler`*| Passes image file up to the parent component | *function\* with event parameter. |
 
-### Making a Progressive Web App
+-- **`<Canvas />`**: HTML `<canvas>` element. Changes `<canvas>` width depending on the window size and updates `<canvas>` on user input. Props accepted:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+| Props     | Description                     | Type               |
+| :-------- | :------------------------------ | :----------------- |
+| `image`\* | Original image uploaded by user | _HTMLImageElement_ |
 
-### Advanced Configuration
+-- **`<TextInput />`**: parent component to all text handlers (text input, size, font and color change components). All atributes are passed via `props` to the `<input>` element. Additional props accepted:
+| Props | Description | Type |
+|:--|:--|:--|
+| `textlocation`* | Value `'top'` or `'bottom'` indicates which of the two text handlers it is | *string\* |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **`<Font />`**: `<Select>` component with font options dropdown. All atributes are passed via `props` to the `<select>` element. Additional props accepted:
 
-### Deployment
+| Props            | Description                                                                | Type     |
+| :--------------- | :------------------------------------------------------------------------- | :------- |
+| `textlocation`\* | Value `'top'` or `'bottom'` indicates which of the two text handlers it is | _string_ |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- **`<FontSizes />`**: `<Select>` component with font sizes dropdown. All atributes are passed via `props` to the `<select>` element. Additional props accepted:
 
-### `npm run build` fails to minify
+| Props            | Description                                                                | Type     |
+| :--------------- | :------------------------------------------------------------------------- | :------- |
+| `textlocation`\* | Value `'top'` or `'bottom'` indicates which of the two text handlers it is | _string_ |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **`<FontColor />`**: Parent component for the color picker. Includes `<button>` with dynamic color change and state and event handler to open the color picker. All atributes are passed via `props` to the `<button>` element. Additional props accepted:
+
+| Props            | Description                                                                | Type     |
+| :--------------- | :------------------------------------------------------------------------- | :------- |
+| `textlocation`\* | Value `'top'` or `'bottom'` indicates which of the two text handlers it is | _string_ |
+
+- **`<ColorPicker />`**: Opened color picker pop-up with transparent background. Includes `<button>` with dynamic color change and event handler to open the color picker. Props accepted:
+
+| Props                | Description                                                                | Type       |
+| :------------------- | :------------------------------------------------------------------------- | :--------- |
+| `textlocation`\*     | Value `'top'` or `'bottom'` indicates which of the two text handlers it is | _string_   |
+| `showColorPicker`\*  | Shows color picker pop-up                                                  | _boolean_  |
+| `closeColorPicker`\* | Passed as `onClick` event to the invisible background                      | _function_ |
+
+\*_Requiered prop_
+
+---
+
+### Redux State
+
+Global state in this project is manager with Redux store `store.js`.
+All action types are saved as variables in `action-types.js`.
+
+#### Reducers:
+
+- `canvasSizeReducer` : manages `<canvas>` width and height change when window is resized. (Action type: `CHANGE_CANVAS_SIZE`)
+- `canvasImageReducer` : uploads updated canvas image to the Redux store after user changes. (Action types: `SET_CANVAS_IMAGE`, `CLEAR_CANVAS_IMAGE`)
+- `textReducer` : manages all text input information by user for both, top and bottom text blocks (text, color, font, size). (Action types: `CHANGE_COLOR`, `CHANGE_TEXT`, `CHANGE_FONT`, `CHANGE_FONTSIZE`, `RESET_TEXTS`).
+
+---
+
+### Utility functions
+
+- `canvas.js`: includes: `writeCanvasText (textlocation, canvasContext, textObject, canvasWidth, canvasHeight)` function to change top or bottom text on the canvas. Parameters:
+
+| Parametert      | Description                                                                                               | Type     |
+| :-------------- | :-------------------------------------------------------------------------------------------------------- | :------- |
+| `textlocation`  | Value `'top'` or `'bottom'` indicates which of the two text handlers it is                                | _string_ |
+| `canvasContext` | `<canvas>` context object                                                                                 | _object_ |
+| `textObject`    | Object with following structure: `{ text: [string], font:[string], fontSize: [string], color: [string] }` | _object_ |
+| `canvasWidth`   | Width of the canvas in px                                                                                 | _number_ |
+| `canvasHeight`  | Height of the canvas in px                                                                                | _number_ |
+
+- `imageSize.js`:
+  - `getMinImageSize (uploadedImageWidth, uploadedImage, canvasSideSize)` : analyses original uploaded image size and calculates minimum size to fit the canvas. Returns following array: `[minWidth, minHeight]`, type _number_.
+  - `getOffsetCoordinates (minImageWidth, minImageHeight)` : analyses minimum image size and if it is not square, calculates offset in coordinates to place center of the image in the center of the canvas. Returns following array: `[x, y]`, type _number_.
