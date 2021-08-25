@@ -180,3 +180,7 @@ All action types are saved as variables in `action-types.js`.
 - `imageSize.js`:
   - `getMinImageSize (uploadedImageWidth, uploadedImage, canvasSideSize)` : analyses original uploaded image size and calculates minimum size to fit the canvas. Returns following array: `[minWidth, minHeight]`, type _number_.
   - `getOffsetCoordinates (minImageWidth, minImageHeight)` : analyses minimum image size and if it is not square, calculates offset in coordinates to place center of the image in the center of the canvas. Returns following array: `[x, y]`, type _number_.
+
+## Author
+
+Developed by Nastia Zhyrnova https://github.com/nastiazhyrnova/
