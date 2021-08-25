@@ -20,12 +20,9 @@ const CanvasStyled = styled.canvas`
 const Canvas = props => {
 	const dispatch = useDispatch();
 	const canvasRef = useRef();
-
 	const { image } = { ...props };
-
 	const canvasSize = useSelector(state => state.canvasSize);
 	const textStore = useSelector(state => state.text);
-
 	const topText = textStore.top;
 	const bottomText = textStore.bottom;
 
@@ -73,7 +70,7 @@ const Canvas = props => {
 			writeCanvasText('top', ctx, topText, canvas.width, canvas.height);
 			writeCanvasText('bottom', ctx, bottomText, canvas.width, canvas.height);
 
-			//update state with edited image
+			//update state with the edited image
 			dispatch({
 				type: SET_CANVAS_IMAGE,
 				canvas: canvas.toDataURL('image/jpeg'),

@@ -17,8 +17,8 @@ const Font = props => {
 	return (
 		<Select {...props} onChange={changeFont}>
 			<option value='Arial'>Arial</option>
-			<option value='Comic Sans MS'>Comic Sans</option>
-			<option value='Impact'>Impact</option>
+			<option value='Comic Sans'>Comic Sans</option>
+			<option value='Oswald'>Oswald</option>
 			<option value='Pacifico'>Pacifico</option>
 		</Select>
 	);
