@@ -14,7 +14,7 @@ import {
 } from '../../../store/actionTypes';
 
 const CanvasStyled = styled.canvas`
-	border: 1px dashed var(--main-white-color);
+	border: 1px dashed var(--purple-color);
 `;
 
 const Canvas = props => {
