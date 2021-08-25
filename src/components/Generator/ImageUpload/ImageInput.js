@@ -15,7 +15,7 @@ const ImageInput = props => {
 			<Button onClick={onClickUpload}>UPLOAD YOUR IMAGE HERE</Button>
 			<input
 				type='file'
-				accept='image/*'
+				accept='image/jpg'
 				onChange={props.uploadImageHandler}
 				ref={imageFileRef}
 				style={{ display: 'none' }}

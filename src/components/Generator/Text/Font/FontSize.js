@@ -17,13 +17,16 @@ const FontSize = props => {
 
 	return (
 		<Select {...props} onChange={changeFontSize}>
-			<option value='75px'>75</option>
-			<option value='70px'>70</option>
-			<option value='65px'>65</option>
-			<option value='60px'>60</option>
-			<option value='55px'>55</option>
-			<option value='50px'>50</option>
-			<option value='45px'>45</option>
+			<option value='75px'>75px</option>
+			<option value='70px'>70px</option>
+			<option value='65px'>65px</option>
+			<option value='60px'>60px</option>
+			<option value='55px'>55px</option>
+			<option value='50px'>50px</option>
+			<option value='45px'>45px</option>
+			<option value='40px'>40px</option>
+			<option value='35px'>35px</option>
+			<option value='30px'>30px</option>
 		</Select>
 	);
 };

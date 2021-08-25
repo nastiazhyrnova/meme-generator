@@ -32,6 +32,8 @@ button:disabled, select:disabled, input:disabled {
     cursor: auto;
   }
 }
+
+
 `;
 
 export default GlobalStyle;

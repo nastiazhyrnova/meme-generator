@@ -24,6 +24,7 @@ const Title = styled.p`
 	font-size: 1.2rem;
 	color: var(--purple-color);
 	font-weight: 500;
+	font-family: 'ComicS', arial !important;
 `;
 
 const Generator = () => {

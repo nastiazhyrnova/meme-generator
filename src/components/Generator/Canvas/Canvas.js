@@ -6,6 +6,7 @@ import {
 	getMinImageSize,
 	getOffsetCoordinates,
 } from '../../../utilities/imageSize';
+import { writeCanvasText } from '../../../utilities/canvas';
 import {
 	CHANGE_CANVAS_SIZE,
 	SET_CANVAS_IMAGE,
@@ -69,33 +70,13 @@ const Canvas = props => {
 			ctx.drawImage(image, x, y, imgWidth, imgHeight);
 
 			//add top text & stroke
-			ctx.font = `${topText.fontSize} ${topText.font}`;
-			ctx.shadowColor = 'black';
-			ctx.shadowBlur = 7;
-			ctx.lineWidth = 5;
-			ctx.textAlign = 'center';
-			ctx.strokeText(topText.text, canvas.width / 2, canvas.height * 0.2);
-			ctx.shadowBlur = 0;
-			ctx.fillStyle = topText.color;
-			ctx.textAlign = 'center';
-			ctx.fillText(topText.text, canvas.width / 2, canvas.height * 0.2);
-
-			//add bottom text & stroke
-			ctx.font = `${bottomText.fontSize} ${bottomText.font}`;
-			ctx.shadowColor = 'black';
-			ctx.shadowBlur = 7;
-			ctx.lineWidth = 5;
-			ctx.textAlign = 'center';
-			ctx.strokeText(bottomText.text, canvas.width / 2, canvas.height * 0.9);
-			ctx.shadowBlur = 0;
-			ctx.fillStyle = bottomText.color;
-			ctx.textAlign = 'center';
-			ctx.fillText(bottomText.text, canvas.width / 2, canvas.height * 0.9);
+			writeCanvasText('top', ctx, topText, canvas.width, canvas.height);
+			writeCanvasText('bottom', ctx, bottomText, canvas.width, canvas.height);
 
 			//update state with edited image
 			dispatch({
 				type: SET_CANVAS_IMAGE,
-				canvas: canvas.toDataURL('image/jpg'),
+				canvas: canvas.toDataURL('image/jpeg'),
 			});
 		} else {
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
