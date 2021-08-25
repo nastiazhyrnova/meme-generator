@@ -23,7 +23,7 @@ export const getMinImageSize = (width, height, max) => {
 	}
 };
 
-export const getOffsetCoordinates = (width, height, max) => {
+export const getOffsetCoordinates = (width, height) => {
 	if (width > height) {
 		//landscape
 		return [-Math.round((width - height) / 2), 0];

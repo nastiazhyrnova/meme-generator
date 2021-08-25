@@ -4,7 +4,7 @@ import Select from '../../../UI/Select';
 
 import { CHANGE_FONTSIZE } from '../../../../store/actionTypes';
 
-const FontSize = props => {
+const FontSizes = props => {
 	const dispatch = useDispatch();
 
 	const changeFontSize = e => {
@@ -31,4 +31,4 @@ const FontSize = props => {
 	);
 };
 
-export default FontSize;
+export default FontSizes;

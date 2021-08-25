@@ -29,7 +29,7 @@ const Canvas = props => {
 	//change canvas size on viewport change
 	useEffect(() => {
 		const changeCanvasSize = () => {
-			if (window.visualViewport.width <= 532) {
+			if (window.visualViewport.width && window.visualViewport.width <= 532) {
 				dispatch({
 					type: CHANGE_CANVAS_SIZE,
 					size: Math.round(window.visualViewport.width - 32),
@@ -53,10 +53,11 @@ const Canvas = props => {
 		const canvas = canvasRef.current;
 		const ctx = canvas.getContext('2d');
 
+		//update image on change:
 		if (image) {
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-			//resize image and add in the center of the canvas
+			//resize image and add in the center of the canvas if it is not square
 			const [imgWidth, imgHeight] = getMinImageSize(
 				image.width,
 				image.height,

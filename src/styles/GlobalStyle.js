@@ -13,9 +13,13 @@ const GlobalStyle = createGlobalStyle`
   --purple-color: #88459A;
   --main-black-color: #222222;
   --main-white-color: #ffffff;
+  --main-bg-color: #f2f2f2;
 }
 html {
   font-size: 16px;
+}
+body {
+  background-color: var(--main-bg-color);
 }
 h1{
   color: var(--main-black-color);

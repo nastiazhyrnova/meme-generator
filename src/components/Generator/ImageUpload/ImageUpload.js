@@ -2,7 +2,7 @@ import { useRef } from 'react';
 
 import Button from '../../UI/Button';
 
-const ImageInput = props => {
+const ImageUpload = props => {
 	const imageFileRef = useRef();
 
 	const onClickUpload = e => {
@@ -24,4 +24,4 @@ const ImageInput = props => {
 	);
 };
 
-export default ImageInput;
+export default ImageUpload;

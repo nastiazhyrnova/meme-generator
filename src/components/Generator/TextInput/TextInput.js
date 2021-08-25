@@ -5,8 +5,8 @@ import Input from '../../UI/Input';
 import FlexColumn from '../../UI/FlexColumn';
 import FlexRow from '../../UI/FlexRow';
 import FontColor from './Font/FontColor/FontColor';
-import FontSize from './Font/FontSize';
-import Font from './Font/Font';
+import FontSizes from './Font/FontSizes';
+import Fonts from './Font/Fonts';
 
 import { CHANGE_TEXT } from '../../../store/actionTypes';
 
@@ -47,8 +47,11 @@ const TextInput = props => {
 						/>
 					</FlexRow>
 					<TextChangeFieldsWrapper>
-						<Font textlocation={props.textlocation} disabled={props.disabled} />
-						<FontSize
+						<Fonts
+							textlocation={props.textlocation}
+							disabled={props.disabled}
+						/>
+						<FontSizes
 							textlocation={props.textlocation}
 							disabled={props.disabled}
 						/>

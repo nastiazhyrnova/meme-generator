@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 import Canvas from './Canvas/Canvas';
-import ImageInput from './ImageUpload/ImageInput';
+import ImageUpload from './ImageUpload/ImageUpload';
 import Button from '../UI/Button';
-import TextInput from './Text/TextInput';
+import TextInput from './TextInput/TextInput';
 import FlexRow from '../UI/FlexRow';
 import FlexColumn from '../UI/FlexColumn';
 
@@ -54,16 +54,14 @@ const Generator = () => {
 		});
 	};
 
+	console.log(typeof uploadedImage);
+
 	return (
 		<GeneratorWrapper>
 			<h1>Meme Generator</h1>
-			<ImageInput uploadImageHandler={uploadImageHandler} />
+			<ImageUpload uploadImageHandler={uploadImageHandler} />
 			<FlexRow>
-				<Canvas
-					image={uploadedImage}
-					topText={textStore.top.text}
-					topTextColor={textStore.top.color}
-				/>
+				<Canvas image={uploadedImage} />
 				<FlexColumn>
 					<Title>Upload your image and add text:</Title>
 					<TextInput

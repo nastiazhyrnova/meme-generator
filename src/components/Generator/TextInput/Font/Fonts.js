@@ -18,7 +18,7 @@ const Pacifico = styled.option`
 	font-family: 'Pacifico' !important;
 `;
 
-const Font = props => {
+const Fonts = props => {
 	const dispatch = useDispatch();
 
 	const changeFont = e => {
@@ -38,4 +38,4 @@ const Font = props => {
 	);
 };
 
-export default Font;
+export default Fonts;
