@@ -64,22 +64,24 @@ const Generator = () => {
 				<Canvas image={uploadedImage} />
 				<FlexColumn>
 					<Title>Upload your image and add text:</Title>
-					<TextInput
-						title='Top text'
-						type='Text'
-						textlocation='top'
-						placeholder='Write top text here'
-						value={textStore.top.text}
-						disabled={!canvasImageStore}
-					/>
-					<TextInput
-						title='Bottom text'
-						type='Text'
-						textlocation='bottom'
-						placeholder='Write bottom text here'
-						value={textStore.bottom.text}
-						disabled={!canvasImageStore}
-					/>
+					<FlexColumn>
+						<TextInput
+							title='Top text'
+							type='Text'
+							textlocation='top'
+							placeholder='Write top text here'
+							value={textStore.top.text}
+							// disabled={!canvasImageStore}
+						/>
+						<TextInput
+							title='Bottom text'
+							type='Text'
+							textlocation='bottom'
+							placeholder='Write bottom text here'
+							value={textStore.bottom.text}
+							// disabled={!canvasImageStore}
+						/>
+					</FlexColumn>
 				</FlexColumn>
 			</FlexRow>
 			<FlexRow>
